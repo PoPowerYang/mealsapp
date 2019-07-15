@@ -11,7 +11,7 @@ class MealDetailScreen extends StatelessWidget {
     return Container(
             padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
             margin: EdgeInsets.symmetric(vertical: 10),
-            color: Colors.black54,
+            color: Theme.of(context).primaryColor,
             child: Text(
               text,
               style: Theme.of(context).textTheme.title,
