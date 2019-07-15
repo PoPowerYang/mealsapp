@@ -40,7 +40,7 @@ class MealDetailScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: Text(
                     selectedMeal.ingredients[index],
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 15),
                   ),
                 ),
               ),
@@ -72,7 +72,9 @@ class MealDetailScreen extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(title: Text('${selectedMeal.title}'),),
+      appBar: AppBar(
+        title: Text('${selectedMeal.title}'),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

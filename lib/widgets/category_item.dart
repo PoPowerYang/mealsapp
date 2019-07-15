@@ -24,8 +24,9 @@ class CategoryItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         child: Container(
           padding: const EdgeInsets.all(15),
-          child: Text( 
+          child: Text(
               title,
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
           decoration: BoxDecoration(
