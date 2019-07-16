@@ -5,15 +5,29 @@ import '../widgets/main_drawer.dart';
 class FilterScreen extends StatefulWidget {
   static final String routeName = '/FilterScreen';
 
+  final Function saveFilters;
+  final Map<String, bool> filters;
+
+  FilterScreen(this.filters, this.saveFilters);
+
   @override
   _FilterScreenState createState() => _FilterScreenState();
 }
 
 class _FilterScreenState extends State<FilterScreen> {
   bool _glutenFree = false;
-  bool _vegatarian = false;
+  bool _vegetarian = false;
   bool _vegan = false;
   bool _lactoseFree = false;
+
+  @override
+  initState() {
+    _glutenFree = widget.filters['gluten'];
+    _vegetarian = widget.filters['vegetarian'];
+    _vegan = widget.filters['vegan'];
+    _lactoseFree = widget.filters['lactose'];
+    super.initState();
+  }
 
   Widget _buildSwitchListTile(
     String title,
@@ -33,7 +47,23 @@ class _FilterScreenState extends State<FilterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Filter'),),
+      appBar: AppBar(
+        title: Text('Filter'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: () {
+              final _selectedFilters = {
+                'gluten' : _glutenFree,
+                'lactose': _lactoseFree,
+                'vegan': _vegan,
+                'vegetarian': _vegetarian,
+              };
+              widget.saveFilters(_selectedFilters);
+            }
+          ),
+        ],
+      ),
       drawer: MainDrawer(),
       body: Column(
         children: <Widget>[
@@ -74,10 +104,10 @@ class _FilterScreenState extends State<FilterScreen> {
                 _buildSwitchListTile(
                   'Vegetarian', 
                   'Only include Vegetarian meals', 
-                  _vegatarian, 
+                  _vegetarian, 
                   (newValue) {
                     setState(() {
-                     _vegatarian = newValue; 
+                     _vegetarian = newValue; 
                     });
                   }
                 ),
