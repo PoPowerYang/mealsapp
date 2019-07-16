@@ -49,20 +49,6 @@ class _FilterScreenState extends State<FilterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Filter'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.save),
-            onPressed: () {
-              final _selectedFilters = {
-                'gluten' : _glutenFree,
-                'lactose': _lactoseFree,
-                'vegan': _vegan,
-                'vegetarian': _vegetarian,
-              };
-              widget.saveFilters(_selectedFilters);
-            }
-          ),
-        ],
       ),
       drawer: MainDrawer(),
       body: Column(
@@ -121,10 +107,23 @@ class _FilterScreenState extends State<FilterScreen> {
                     });
                   }
                 )
+
               ],
             ),
-          )
+          ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.save),
+        onPressed: () {
+              final _selectedFilters = {
+                'gluten' : _glutenFree,
+                'lactose': _lactoseFree,
+                'vegan': _vegan,
+                'vegetarian': _vegetarian,
+              };
+              widget.saveFilters(_selectedFilters);
+            },
       ),
     );
   }
