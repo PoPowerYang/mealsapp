@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/main_drawer.dart';
+import '../widgets/main_drawer.dart';
 import '../screens/favorite_screen.dart';
 import '../screens/categories_screen.dart';
 
